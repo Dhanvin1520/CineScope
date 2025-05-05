@@ -1,0 +1,189 @@
+.home {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: clamp(8px, 3vw, 16px) clamp(12px, 4vw, 20px);
+  background: radial-gradient(circle at top left, #1a1a1a 0%, #0d0d0d 40%, #000000 100%), 
+            radial-gradient(circle at bottom right, rgba(0, 255, 128, 0.15), transparent 60%),
+            radial-gradient(circle at 80% 20%, rgba(0, 200, 255, 0.1), transparent 60%);
+  background-blend-mode: overlay;
+  color: white;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+.search-container {
+  display: flex;
+  gap: clamp(6px, 1.5vw, 8px);
+  margin: clamp(12px, 3vw, 16px) auto;
+  background: linear-gradient(145deg, #444, #2a2a2a);
+  padding: clamp(6px, 1.5vw, 10px);
+  border-radius: 30px;
+  width: clamp(250px, 90vw, 600px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  transition: transform 0.2s ease;
+}
+
+.search-container:focus-within {
+  transform: scale(1.02);
+}
+
+.search-input {
+  flex: 1;
+  padding: clamp(8px, 2vw, 12px);
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: clamp(13px, 3.5vw, 15px);
+  outline: none;
+}
+
+.search-btn {
+  padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 20px);
+  background: #092c60;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  cursor: pointer;
+  font-size: clamp(13px, 3.5vw, 15px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.search-btn:hover {
+  background: #e60000;
+}
+
+.scroll-container {
+  overflow: hidden;
+  margin: clamp(12px, 3vw, 16px) 0;
+}
+
+.scroll-track {
+  display: flex;
+  gap: clamp(6px, 1.5vw, 8px);
+  animation: scroll 30s linear infinite;
+  white-space: nowrap;
+}
+
+.scroll-track .movie-card {
+  flex: 0 0 auto;
+  width: clamp(140px, 30vw, 200px);
+}
+
+.scroll-container:hover .scroll-track {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-top: clamp(12px, 3vw, 16px);
+}
+
+h2 {
+  font-size: clamp(18px, 4vw, 22px);
+  margin: clamp(12px, 3vw, 16px) 0 clamp(6px, 1.5vw, 8px);
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: clamp(12px, 3vw, 16px);
+  font-size: clamp(14px, 3.5vw, 16px);
+}
+
+@media (max-width: 1024px) {
+  .movie-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .movie-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .scroll-track .movie-card {
+    width: clamp(120px, 40vw, 160px);
+  }
+
+  .search-container {
+    width: clamp(220px, 92vw, 500px);
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-track .movie-card {
+    width: clamp(110px, 45vw, 150px);
+  }
+
+  .movie-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .search-container {
+    width: clamp(200px, 94vw, 400px);
+    padding: clamp(4px, 2vw, 8px);
+    gap: clamp(4px, 1.5vw, 6px);
+  }
+
+  .search-input {
+    padding: clamp(6px, 2.5vw, 10px);
+    font-size: clamp(12px, 4vw, 14px);
+  }
+
+  .search-btn {
+    padding: clamp(6px, 2.5vw, 10px) clamp(10px, 3.5vw, 16px);
+    font-size: clamp(12px, 4vw, 14px);
+  }
+}
+
+@media (max-width: 360px) {
+  .movie-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .scroll-track .movie-card {
+    width: clamp(100px, 50vw, 140px);
+  }
+
+  .search-container {
+    width: clamp(180px, 96vw, 320px);
+    padding: clamp(4px, 2.5vw, 6px);
+  }
+
+  .search-input {
+    padding: clamp(4px, 3vw, 8px);
+    font-size: clamp(11px, 4.5vw, 13px);
+  }
+
+  .search-btn {
+    padding: clamp(4px, 3vw, 8px) clamp(8px, 4vw, 12px);
+    font-size: clamp(11px, 4.5vw, 13px);
+  }
+}
+
+.movie-card img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.movie-card:hover img {
+  transform: scale(1.05);
+}

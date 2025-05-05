@@ -1,79 +1,112 @@
-
 .navbar {
-  background: linear-gradient(135deg, #0a0a0a, #212121);
-  padding: 1rem 2rem;
+  background: linear-gradient(90deg, #000000, #333333);
+  padding: clamp(12px, 3vw, 16px) clamp(16px, 4vw, 24px);
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  animation: slideIn 0.5s ease-out;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
 }
 
-
 .navbar-brand {
-  font-size: 1.6rem;
+  font-size: clamp(20px, 4vw, 28px);
   font-weight: bold;
-  color: #fff;
   text-transform: uppercase;
 }
 
+.navbar-brand .brand-link {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.navbar-brand .brand-link:hover,
+.navbar-brand .brand-link:visited,
+.navbar-brand .brand-link:active {
+  color: #e6e1d6;
+}
 
 .navbar-links {
   display: flex;
-  gap: 2rem;
+  gap: clamp(12px, 2.5vw, 16px);
 }
 
-
 .nav-link {
-  color: #fff;
+  color: #e9e7e0;
   text-decoration: none;
-  padding: 0.5rem 1rem;
+  padding: clamp(8px, 2vw, 12px) clamp(12px, 2.5vw, 16px);
   border-radius: 6px;
-  background-color: rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
+  font-size: clamp(14px, 3vw, 18px);
+  transition: background 0.3s, transform 0.3s;
 }
 
 .nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
 }
 
-
 @media (max-width: 768px) {
   .navbar {
-    padding: 1rem;
-    flex-wrap: wrap;
+    padding: clamp(10px, 3.5vw, 14px) clamp(12px, 4vw, 16px);
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .navbar-brand {
-    font-size: 1.3rem;
+    font-size: clamp(18px, 4.5vw, 24px);
   }
 
   .navbar-links {
-    gap: 1rem;
+    gap: clamp(8px, 2.5vw, 12px);
     width: 100%;
     justify-content: center;
-    margin-top: 1rem;
+    margin-top: clamp(8px, 2.5vw, 12px);
   }
 
   .nav-link {
-    padding: 0.5rem;
-    font-size: 1rem;
+    padding: clamp(6px, 2vw, 10px) clamp(8px, 2.5vw, 12px);
+    font-size: clamp(12px, 3.5vw, 16px);
   }
 }
 
-
-@keyframes slideIn {
-  from {
-    transform: translateY(-100%);
-    opacity: 0;
+@media (max-width: 480px) {
+  .navbar {
+    padding: clamp(8px, 4vw, 12px) clamp(8px, 5vw, 12px);
   }
-  to {
-    transform: translateY(0);
-    opacity: 1;
+
+  .navbar-brand {
+    font-size: clamp(16px, 5vw, 20px);
+  }
+
+  .navbar-links {
+    flex-wrap: wrap;
+    gap: clamp(6px, 2.5vw, 8px);
+    margin-top: clamp(6px, 2.5vw, 8px);
+  }
+
+  .nav-link {
+    padding: clamp(4px, 2vw, 8px) clamp(6px, 2.5vw, 10px);
+    font-size: clamp(11px, 3.5vw, 14px);
+  }
+}
+
+@media (max-width: 360px) {
+  .navbar {
+    padding: clamp(6px, 4.5vw, 10px) clamp(6px, 5.5vw, 10px);
+  }
+
+  .navbar-brand {
+    font-size: clamp(14px, 5.5vw, 18px);
+  }
+
+  .navbar-links {
+    gap: clamp(4px, 2.5vw, 6px);
+  }
+
+  .nav-link {
+    padding: clamp(4px, 2.5vw, 6px) clamp(4px, 2.5vw, 8px);
+    font-size: clamp(10px, 4vw, 13px);
   }
 }

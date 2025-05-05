@@ -1,84 +1,105 @@
-
 .movie-card {
-  background-color: #1c1c1c;
-  color: #fff;
+  background: #222;
+  color: white;
   border-radius: 8px;
   overflow: hidden;
-  position: relative;
-  transition: transform 0.3s ease;
+  width: 100%;
+  max-width: 280px;
+  transition: transform 0.3s;
 }
 
 .movie-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-5px);
 }
 
-.movie-poster-container {
+.poster-container {
   position: relative;
-  overflow: hidden;
-  border-radius: 8px;
 }
 
 .movie-poster {
   width: 100%;
-  height: auto;
+  height: 400px;
   object-fit: cover;
 }
 
-.movie-overlay {
+.overlay {
   position: absolute;
   top: 0;
+  left: 0;
   right: 0;
   bottom: 0;
-  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.4);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s;
 }
 
-.movie-card:hover .movie-overlay {
+.movie-card:hover .overlay {
   opacity: 1;
 }
 
-.favorite-btn {
+.fav-btn {
   background: none;
   border: none;
-  color: #fff;
-  font-size: 2rem;
+  color: white;
+  font-size: 24px;
   cursor: pointer;
-  transition: transform 0.2s ease;
 }
 
-.favorite-btn.active {
-  color: #ff4081;
-  transform: scale(1.2);
+.fav-btn.active {
+  color: #ff4d4d;
 }
 
-.movie-info {
-  padding: 15px;
+.movie-details {
+  padding: 10px;
   text-align: center;
 }
 
 .movie-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin: 0;
+  font-size: 16px;
+  margin: 5px 0;
 }
 
-.movie-release-year {
-  font-size: 1rem;
-  color: #aaa;
+.movie-year {
+  font-size: 14px;
+  color: #888;
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-top: clamp(4px, 1vw, 8px);
 }
 
 @media (max-width: 768px) {
   .movie-card {
-    max-width: 90%;
-    margin: 10px auto;
+    max-width: 240px;
   }
 
-  .movie-title {
-    font-size: 1.2rem;
+  .movie-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .movie-card {
+    max-width: 220px;
+  }
+
+  .movie-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 360px) {
+  .movie-card {
+    max-width: 200px;
+  }
+
+  .movie-grid {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
