@@ -8,20 +8,24 @@ function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
   useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        const trending = await getTrendingMovies();
-        setMovies(trending);
-      } catch (err) {
-        setError("Could not load movies");
-      } finally {
-        setLoading(false);
+    const fetchTrending = async () => {
+      if (searchQuery.trim() === "") {
+        setLoading(true);
+        try {
+          const trending = await getTrendingMovies();
+          setMovies(trending);
+          setError(null);
+        } catch (err) {
+          setError("Could not load trending movies");
+        } finally {
+          setLoading(false);
+        }
       }
     };
-    fetchMovies();
-  }, []);
+  
+    fetchTrending();
+  }, [searchQuery]);
 
   const handleSearch = async (e) => {
     e.preventDefault();
