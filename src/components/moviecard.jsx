@@ -6,7 +6,7 @@ function MovieCard({ movie }) {
   const favorite = isFavorite(movie.id)
 
   const handleFavorite = (e) => {
-    e.preventDefault()
+
     if (favorite) {
       removeFromFavorites(movie.id)
     } else {
