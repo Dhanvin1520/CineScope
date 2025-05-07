@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/CineScope/static/css/main.a6a915cc.css",
+    "main.js": "/CineScope/static/js/main.8e960ea4.js",
+    "index.html": "/CineScope/index.html",
+    "main.a6a915cc.css.map": "/CineScope/static/css/main.a6a915cc.css.map",
+    "main.8e960ea4.js.map": "/CineScope/static/js/main.8e960ea4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a6a915cc.css",
+    "static/js/main.8e960ea4.js"
+  ]
+}
