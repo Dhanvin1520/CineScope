@@ -1,42 +1,62 @@
 import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 import "../css/login.css";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const { login, loginAsGuest } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+  const handleLogin = (e) => {
     e.preventDefault();
-    alert(`Email: ${email}\nPassword: ${password}`);
+
+   
+    if (email === "admin@example.com" && password === "123456") {
+      login({ email });
+      navigate(from, { replace: true });
+    } else {
+      alert("Invalid credentials");
+    }
+  };
+
+  const handleGuestLogin = () => {
+    loginAsGuest();
+    navigate(from, { replace: true });
   };
 
   return (
-    <div className="login-container">
-      <h2 className="login-title">Login</h2>
-      <form onSubmit={handleSubmit} className="login-form">
-        <div className="form-group">
-          <label>Email:</label>
-          <input
-            type="email"
-            className="form-input"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
+    <div className="login-page">
+      <form onSubmit={handleLogin} className="login-form">
+        <h2>Login</h2>
 
-        <div className="form-group">
-          <label>Password:</label>
-          <input
-            type="password"
-            className="form-input"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
 
-        <button type="submit" className="login-button">Login</button>
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+
+        <button type="submit">Log In</button>
+
+        <hr />
+
+        <button type="button" onClick={handleGuestLogin} className="guest-btn">
+          Continue as Guest
+        </button>
       </form>
     </div>
   );
